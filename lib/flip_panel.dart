@@ -10,9 +10,10 @@
 
 library flip_panel;
 
-import 'package:flutter/material.dart';
 import 'dart:async';
 import 'dart:math' as math;
+
+import 'package:flutter/material.dart';
 
 typedef Widget DigitBuilder(BuildContext, int);
 
@@ -26,6 +27,7 @@ class FlipClock extends StatelessWidget {
   final DateTime startTime;
   final EdgeInsets spacing;
   final FlipDirection flipDirection;
+  final Color separatorColor;
 
   /// Set countdown to true to have a countdown timer.
   final bool countdownMode;
@@ -51,6 +53,7 @@ class FlipClock extends StatelessWidget {
     this.flipDirection = FlipDirection.down,
     this.height = 44.0,
     this.width = 60.0,
+    this.separatorColor,
     this.timeLeft,
   })  : _showHours = true,
         _showDays = false,
@@ -58,19 +61,20 @@ class FlipClock extends StatelessWidget {
         _separator = separator,
         onDone = null;
 
-  FlipClock.simple({
-    Key key,
-    @required this.startTime,
-    @required Color digitColor,
-    @required Color backgroundColor,
-    @required double digitSize,
-    BorderRadius borderRadius = const BorderRadius.all(Radius.circular(0.0)),
-    this.spacing = const EdgeInsets.symmetric(horizontal: 2.0),
-    this.flipDirection = FlipDirection.down,
-    this.height = 60.0,
-    this.width = 44.0,
-    this.timeLeft,
-  })  : countdownMode = false,
+  FlipClock.simple(
+      {Key key,
+      @required this.startTime,
+      @required Color digitColor,
+      @required Color backgroundColor,
+      @required double digitSize,
+      BorderRadius borderRadius = const BorderRadius.all(Radius.circular(0.0)),
+      this.spacing = const EdgeInsets.symmetric(horizontal: 2.0),
+      this.flipDirection = FlipDirection.down,
+      this.height = 60.0,
+      this.width = 44.0,
+      this.timeLeft,
+      this.separatorColor})
+      : countdownMode = false,
         _showHours = true,
         _showDays = false,
         onDone = null {
@@ -121,6 +125,7 @@ class FlipClock extends StatelessWidget {
     this.height = 60.0,
     this.width = 44.0,
     this.startTime,
+    this.separatorColor,
   })  : countdownMode = true,
         timeLeft = duration,
         _showHours = duration.inHours > 0,
@@ -173,6 +178,7 @@ class FlipClock extends StatelessWidget {
     this.flipDirection = FlipDirection.down,
     this.height = 40.0,
     this.width = 24.0,
+    this.separatorColor = Colors.grey,
   })  : countdownMode = true,
         startTime = DateTime(2018, 0, 0, 0, 0, duration.inSeconds),
         _showHours = true,
@@ -195,10 +201,6 @@ class FlipClock extends StatelessWidget {
           ),
         );
     _separator = Container(
-      decoration: BoxDecoration(
-        color: backgroundColor,
-        borderRadius: borderRadius,
-      ),
       width: width / 2,
       height: height,
       alignment: Alignment.center,
@@ -206,7 +208,7 @@ class FlipClock extends StatelessWidget {
         ':',
         style: TextStyle(
           fontSize: digitSize,
-          color: digitColor,
+          color: separatorColor,
         ),
       ),
     );
