@@ -28,6 +28,7 @@ class FlipClock extends StatelessWidget {
   final EdgeInsets spacing;
   final FlipDirection flipDirection;
   final Color separatorColor;
+  final TextStyle labelStyle;
 
   /// Set countdown to true to have a countdown timer.
   final bool countdownMode;
@@ -54,6 +55,7 @@ class FlipClock extends StatelessWidget {
     this.height = 44.0,
     this.width = 60.0,
     this.separatorColor,
+    this.labelStyle,
     this.timeLeft,
   })  : _showHours = true,
         _showDays = false,
@@ -61,20 +63,21 @@ class FlipClock extends StatelessWidget {
         _separator = separator,
         onDone = null;
 
-  FlipClock.simple(
-      {Key key,
-      @required this.startTime,
-      @required Color digitColor,
-      @required Color backgroundColor,
-      @required double digitSize,
-      BorderRadius borderRadius = const BorderRadius.all(Radius.circular(0.0)),
-      this.spacing = const EdgeInsets.symmetric(horizontal: 2.0),
-      this.flipDirection = FlipDirection.down,
-      this.height = 60.0,
-      this.width = 44.0,
-      this.timeLeft,
-      this.separatorColor})
-      : countdownMode = false,
+  FlipClock.simple({
+    Key key,
+    @required this.startTime,
+    @required Color digitColor,
+    @required Color backgroundColor,
+    @required double digitSize,
+    BorderRadius borderRadius = const BorderRadius.all(Radius.circular(0.0)),
+    this.spacing = const EdgeInsets.symmetric(horizontal: 2.0),
+    this.flipDirection = FlipDirection.down,
+    this.height = 60.0,
+    this.width = 44.0,
+    this.timeLeft,
+    this.separatorColor,
+    this.labelStyle,
+  })  : countdownMode = false,
         _showHours = true,
         _showDays = false,
         onDone = null {
@@ -126,6 +129,7 @@ class FlipClock extends StatelessWidget {
     this.width = 44.0,
     this.startTime,
     this.separatorColor,
+    this.labelStyle,
   })  : countdownMode = true,
         timeLeft = duration,
         _showHours = duration.inHours > 0,
@@ -179,6 +183,7 @@ class FlipClock extends StatelessWidget {
     this.height = 40.0,
     this.width = 24.0,
     this.separatorColor = Colors.grey,
+    this.labelStyle,
   })  : countdownMode = true,
         startTime = DateTime(2018, 0, 0, 0, 0, duration.inSeconds),
         _showHours = true,
@@ -248,7 +253,8 @@ class FlipClock extends StatelessWidget {
             (DateTime time) =>
                 (timeLeft.inDays > 99) ? 9 : (timeLeft.inDays % 10),
             startTime,
-            "days"),
+            "days",
+            labelStyle),
         Column(
           children: <Widget>[
             Padding(
@@ -276,7 +282,8 @@ class FlipClock extends StatelessWidget {
                 ? (timeLeft.inHours % 24) % 10
                 : (time.hour) % 10,
             startTime,
-            "Hours"),
+            "Hours",
+            labelStyle),
         Column(
           children: <Widget>[
             Padding(
@@ -306,7 +313,8 @@ class FlipClock extends StatelessWidget {
                   ? (timeLeft.inMinutes % 60) % 10
                   : (time.minute) % 10,
               startTime,
-              "minutes"),
+              "minutes",
+              labelStyle),
 
           Column(
             children: <Widget>[
@@ -332,15 +340,38 @@ class FlipClock extends StatelessWidget {
                   ? (timeLeft.inSeconds % 60) % 10
                   : (time.second) % 10,
               startTime,
-              "seconds")
+              "seconds",
+              labelStyle)
         ]),
     );
   }
 
   _buildSegment(Stream<DateTime> timeStream, Function tensDigit,
-      Function onesDigit, DateTime startTime, String id) {
+      Function onesDigit, DateTime startTime, String id, TextStyle labelStyle) {
     return Column(
       children: <Widget>[
+        (_showDays)
+            ? Row(
+                children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 8.0),
+                    child: Padding(
+                      padding: const EdgeInsets.all(2.0),
+                      child: Text(
+                        id.toUpperCase(),
+                        style: (labelStyle != null)
+                            ? labelStyle
+                            : TextStyle(
+                                color: Colors.black,
+                                fontSize: 8.0,
+                                fontWeight: FontWeight.bold,
+                              ),
+                      ),
+                    ),
+                  ),
+                ],
+              )
+            : Row(),
         Row(children: [
           Padding(
             padding: spacing,
@@ -363,34 +394,6 @@ class FlipClock extends StatelessWidget {
             ),
           ),
         ]),
-        (_showDays)
-            ? Row(
-                children: <Widget>[
-                  Padding(
-                    padding: const EdgeInsets.all(1.0),
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(3.0),
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: Colors.black,
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(2.0),
-                          child: Text(
-                            id.toUpperCase(),
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 8.0,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  )
-                ],
-              )
-            : Row()
       ],
     );
   }
