@@ -276,6 +276,7 @@ class FlipClock extends StatelessWidget {
             "Hours",
             labelStyle),
         Column(
+          mainAxisAlignment: MainAxisAlignment.end,
           children: <Widget>[
             Padding(
               padding: spacing,
@@ -345,7 +346,7 @@ class FlipClock extends StatelessWidget {
             ? Row(
                 children: <Widget>[
                   Padding(
-                    padding: const EdgeInsets.only(bottom: 8.0),
+                    padding: const EdgeInsets.only(bottom: 1.0),
                     child: Padding(
                       padding: const EdgeInsets.all(2.0),
                       child: Text(

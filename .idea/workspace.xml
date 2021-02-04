@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="318b2feb-90f2-46ed-937c-fcb23f4fb487" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/lib/flip_panel.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/flip_panel.dart" afterDir="false" />
-    </list>
+    <list default="true" id="318b2feb-90f2-46ed-937c-fcb23f4fb487" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,8 +14,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lib/flip_panel.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="415">
-              <caret line="263" lean-forward="true" selection-start-line="263" selection-end-line="263" />
+            <state relative-caret-position="205">
+              <caret line="242" column="17" selection-start-line="242" selection-start-column="8" selection-end-line="242" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -71,6 +69,8 @@
       <find>black</find>
       <find>_buildSegment</find>
       <find>backgroundColor</find>
+      <find>minut</find>
+      <find>digitList</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -177,9 +177,6 @@
     </layout>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/pubspec.yaml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/example/android/build.gradle">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -206,10 +203,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/pubspec.yaml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/lib/flip_panel.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="415">
-          <caret line="263" lean-forward="true" selection-start-line="263" selection-end-line="263" />
+        <state relative-caret-position="205">
+          <caret line="242" column="17" selection-start-line="242" selection-start-column="8" selection-end-line="242" selection-end-column="17" />
         </state>
       </provider>
     </entry>
