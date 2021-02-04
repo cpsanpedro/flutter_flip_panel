@@ -10,9 +10,10 @@
 
 library flip_panel;
 
-import 'package:flutter/material.dart';
 import 'dart:async';
 import 'dart:math' as math;
+
+import 'package:flutter/material.dart';
 
 typedef Widget DigitBuilder(BuildContext, int);
 
@@ -168,7 +169,7 @@ class FlipClock extends StatelessWidget {
     @required Color backgroundColor,
     @required double digitSize,
     BorderRadius borderRadius = const BorderRadius.all(Radius.circular(0.0)),
-    this.spacing = const EdgeInsets.symmetric(horizontal: 0.0),
+    this.spacing = const EdgeInsets.symmetric(horizontal: 2.0),
     this.onDone,
     this.flipDirection = FlipDirection.down,
     this.height = 40.0,
