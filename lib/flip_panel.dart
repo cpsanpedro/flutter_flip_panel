@@ -255,19 +255,10 @@ class FlipClock extends StatelessWidget {
             startTime,
             "days",
             labelStyle),
-        Column(
-          children: <Widget>[
-            Padding(
-              padding: spacing,
-              child: _separator,
-            ),
-            (_showDays)
-                ? Container(color: Colors.black)
-                : Container(
-                    color: Colors.transparent,
-                  )
-          ],
-        )
+        Padding(
+          padding: spacing,
+          child: _separator,
+        ),
       ]);
     }
 
@@ -313,7 +304,7 @@ class FlipClock extends StatelessWidget {
                   ? (timeLeft.inMinutes % 60) % 10
                   : (time.minute) % 10,
               startTime,
-              "minutes",
+              "mins",
               labelStyle),
 
           Column(
